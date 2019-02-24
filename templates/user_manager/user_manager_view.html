@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}django模板增删改查{% endblock %}
+{% block content %}
+<a class="btn btn-primary" href="{% url 'user_manager_add' %}" role="button">新增用户</a>
+<table class="table">
+  <thead>
+      <tr>
+          <th>数据库ID</th>
+          <th>账户名</th>
+          <th>性别</th>
+          <th>住址</th>
+          <th>创建时间</th>
+          <th>操作</th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for own_user in own_users %}
+          <tr>
+            <td>{{ own_user.id }}</td>
+            <td>{{ own_user.name }}</td>
+            <td>{{ own_user.sex }}</td>
+            <td>{{ own_user.address }}</td>
+            <td>{{ own_user.create_time }}</td>
+            <td>
+                <a class="btn btn-primary" href="{% url 'user_delete' %}?id={{ own_user.id }}" role="button">删除</a>
+                <a class="btn btn-primary" href="{% url 'user_update' %}?id={{ own_user.id }}" role="button">修改</a>
+            </td>
+          </tr>
+      {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
