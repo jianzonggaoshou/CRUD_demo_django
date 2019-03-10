@@ -24,6 +24,14 @@
             <td>
                 <a class="btn btn-primary" href="{% url 'user_delete' %}?id={{ own_user.id }}" role="button">删除</a>
                 <a class="btn btn-primary" href="{% url 'user_update' %}?id={{ own_user.id }}" role="button">修改</a>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExample">
+                  Button with data-target
+                </button>
+                <div class="collapse" id="collapseExample{{ forloop.counter }}"  >
+                  <div class="well">
+                    {{ own_user.id }}
+                  </div>
+                </div>
             </td>
           </tr>
       {% endfor %}
